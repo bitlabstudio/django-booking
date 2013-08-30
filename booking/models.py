@@ -156,6 +156,7 @@ class Booking(models.Model):
     phone = models.CharField(
         verbose_name=_('Phone'),
         max_length=256,
+        blank=True,
     )
 
     special_request = models.TextField(
@@ -180,7 +181,6 @@ class Booking(models.Model):
     )
 
     booking_id = models.CharField(
-        unique=True,
         max_length=100,
         verbose_name=_('Booking ID'),
         blank=True,
@@ -201,7 +201,8 @@ class Booking(models.Model):
         ordering = ['-creation_date']
 
     def __unicode__(self):
-        return '{} ({})'.format(self.booking_id or self.pk, self.creation_date)
+        return '#{} ({})'.format(self.booking_id or self.pk,
+                                 self.creation_date)
 
 
 class BookingItem(models.Model):

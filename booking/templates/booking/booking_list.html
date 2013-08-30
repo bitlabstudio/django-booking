@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "My bookings" %}{% endblock %}
+
+{% block main %}
+    <h1>{% trans "My bookings" %}</h1>
+    <ul>
+        {% for booking in object_list %}
+            <li><a href="{% url "booking_detail" pk=booking.pk %}">{{ booking }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

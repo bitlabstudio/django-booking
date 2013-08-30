@@ -6,3 +6,4 @@ flake8
 fabric
 factory_boy
 -e git+http://bitbucket.org/dkaufhold/django-international.git#egg=international
+South==0.8.2

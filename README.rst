@@ -48,8 +48,21 @@ Don't forget to migrate your database
 Usage
 -----
 
-TODO: Describe usage or point to docs. Also describe available settings and
-templatetags.
+If you allow anonymous bookings, the session object is stored within the
+booking model. Otherwise it will be connected to the User model.
+
+NOTE: If a session is destroyed, the connected booking model will also be
+removed.
+
+Settings
+--------
+
+BOOKING_STATUS_CREATED
+++++++++++++++++++++++
+
+Default: 'pending'
+
+Slug of the ``BookingStatus``, which should be added after booking creation.
 
 
 Contribute
