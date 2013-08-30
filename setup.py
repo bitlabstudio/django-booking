@@ -52,6 +52,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'django',
+        'Django>=1.5.2',
+        'simple-translation>=0.8.6',
+        'django-libs>=1.16',
     ],
 )

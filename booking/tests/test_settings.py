@@ -32,7 +32,7 @@ TEMPLATE_DIRS = (
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(
     os.path.join(APP_ROOT, 'tests/coverage'))
 COVERAGE_MODULE_EXCLUDES = [
-    'tests$', 'settings$', 'urls$', 'locale$',
+    'tests$', 'settings$', 'urls$', 'locale$', 'simple_translate$',
     'migrations', 'fixtures', 'admin$', 'django_extensions',
 ]
 
@@ -46,8 +46,8 @@ EXTERNAL_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.sites',
-    'django_jasmine',
     'django_nose',
+    'simple_translation',
 ]
 
 INTERNAL_APPS = [

@@ -1,11 +1,19 @@
 """Admin classes for the booking app."""
-# from django.contrib import admin
+from django.contrib import admin
 
-# from . import models
+from simple_translation.admin import TranslationAdmin
+
+from . import models
 
 
-# class YourModelAdmin(admin.ModelAdmin):
-#    list_display = ['some', 'fields', ]
-#    search_fields = ['some', 'fieds', ]
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ['creation_date', 'booking_status', 'booking_id', 'user',
+                    'session', 'date_from', 'date_until']
 
-# admin.site.register(models.YourModel, YourModelAdmin)
+
+class BookingItemAdmin(admin.ModelAdmin):
+    list_display = ['booking', 'booked_item', 'quantity', 'persons']
+
+admin.site.register(models.Booking, BookingAdmin)
+admin.site.register(models.BookingItem, BookingItemAdmin)
+admin.site.register(models.BookingStatus, TranslationAdmin)
