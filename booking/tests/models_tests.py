@@ -35,3 +35,14 @@ class BookingStatusTestCase(TestCase):
     def test_instance(self):
         self.assertTrue(self.booking_status.pk, msg=(
             'Booking status model should have been created.'))
+
+
+class ExtraPersonInfoTestCase(TestCase):
+    longMessage = True
+
+    def setUp(self):
+        self.info = factories.ExtraPersonInfoFactory()
+
+    def test_instance(self):
+        self.assertTrue(self.info.pk, msg=(
+            'Person info model should have been created.'))

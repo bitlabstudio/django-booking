@@ -42,3 +42,12 @@ class BookingItemFactory(factory.DjangoModelFactory):
 
     booking = factory.SubFactory(BookingFactory)
     booked_item = factory.SubFactory(UserFactory)
+
+
+class ExtraPersonInfoFactory(factory.DjangoModelFactory):
+    """Factory for the ``ExtraPersonInfo`` model."""
+    FACTORY_FOR = models.ExtraPersonInfo
+
+    booking = factory.SubFactory(BookingFactory)
+    forename = 'Foo'
+    surname = 'Bar'

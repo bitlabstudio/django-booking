@@ -197,6 +197,9 @@ class Booking(models.Model):
         blank=True,
     )
 
+    class Meta:
+        ordering = ['-creation_date']
+
     def __unicode__(self):
         return '{} ({})'.format(self.booking_id or self.pk, self.creation_date)
 
@@ -231,5 +234,52 @@ class BookingItem(models.Model):
         verbose_name=_('Booking'),
     )
 
+    class Meta:
+        ordering = ['-booking__creation_date']
+
     def __unicode__(self):
         return '{} ({})'.format(self.booking, self.booked_item)
+
+
+class ExtraPersonInfo(models.Model):
+    """
+    Model to add extra information of persons/guests to a booking.
+
+    :forename: First name of the user.
+    :surname: Last name of the user.
+    :arrival: Arrival date of the guest.
+    :booking: Connection to related booking.
+    :message: An additional message regarding this person.
+
+    """
+    forename = models.CharField(
+        verbose_name=_('First name'),
+        max_length=20,
+    )
+
+    surname = models.CharField(
+        verbose_name=_('Last name'),
+        max_length=20,
+    )
+
+    arrival = models.DateTimeField(
+        verbose_name=_('Arrival'),
+        blank=True, null=True,
+    )
+
+    booking = models.ForeignKey(
+        'booking.Booking',
+        verbose_name=_('Booking'),
+    )
+
+    message = models.TextField(
+        max_length=1024,
+        verbose_name=_('Message'),
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ['-booking__creation_date']
+
+    def __unicode__(self):
+        return '{} {} ({})'.format(self.forename, self.surename, self.booking)
