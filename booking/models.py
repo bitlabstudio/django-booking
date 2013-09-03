@@ -198,7 +198,7 @@ class Booking(models.Model):
     booking_status = models.ForeignKey(
         'booking.BookingStatus',
         verbose_name=('Notes'),
-        blank=True,
+        blank=True, null=True,
     )
 
     notes = models.TextField(
