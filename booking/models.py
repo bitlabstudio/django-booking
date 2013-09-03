@@ -94,6 +94,7 @@ class Booking(models.Model):
             ('female', _('female')),
             ('male', _('male')),
         ),
+        blank=True,
     )
 
     title = models.CharField(
@@ -109,22 +110,26 @@ class Booking(models.Model):
     forename = models.CharField(
         verbose_name=_('First name'),
         max_length=20,
+        blank=True,
     )
 
     surname = models.CharField(
         verbose_name=_('Last name'),
         max_length=20,
+        blank=True,
     )
 
     nationality = models.CharField(
         max_length=2,
         verbose_name=_('Nationality'),
         choices=countries,
+        blank=True,
     )
 
     street1 = models.CharField(
         verbose_name=_('Street 1'),
         max_length=256,
+        blank=True,
     )
 
     street2 = models.CharField(
@@ -136,21 +141,25 @@ class Booking(models.Model):
     city = models.CharField(
         verbose_name=_('City'),
         max_length=256,
+        blank=True,
     )
 
     zip_code = models.CharField(
         verbose_name=_('ZIP/Postal code'),
         max_length=256,
+        blank=True,
     )
 
     country = models.CharField(
         max_length=2,
         verbose_name=_('Country'),
         choices=countries,
+        blank=True,
     )
 
     email = models.EmailField(
         verbose_name=_('Email'),
+        blank=True,
     )
 
     phone = models.CharField(
@@ -189,6 +198,7 @@ class Booking(models.Model):
     booking_status = models.ForeignKey(
         'booking.BookingStatus',
         verbose_name=('Notes'),
+        blank=True,
     )
 
     notes = models.TextField(

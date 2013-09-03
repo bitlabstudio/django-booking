@@ -10,6 +10,16 @@ class BookingForm(forms.ModelForm):
         self.user = user
         self.session = session
         super(BookingForm, self).__init__(*args, **kwargs)
+        # fields that should remain blank / not required
+        keep_blank = [
+            'phone', 'notes', 'street2', 'title', 'user', 'session',
+            'date_from', 'date_until', 'special_request']
+        # set all fields except the keep_blank ones to be required, since they
+        # need to be blank=True on the model itself to allow creating Booking
+        # instances without data
+        for name, field in self.fields.iteritems():
+            if name not in keep_blank:
+                self.fields[name].required = True
 
     def save(self, *args, **kwargs):
         if not self.instance.pk:
