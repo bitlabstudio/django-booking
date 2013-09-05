@@ -71,7 +71,9 @@ Default: ''
 
 The default value for the ``time_unit`` attribute of the Booking. Set it in
 case you need to specify that you want to book something e.g. X days or Y
-hours.
+hours. Set it to the singular of that time unit:::
+
+   BOOKING_TIME_INTERVAL = 'day'
 
 Contribute
 ----------
