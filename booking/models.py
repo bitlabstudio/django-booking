@@ -71,6 +71,7 @@ class Booking(models.Model):
     :zip_code (optional): ZIP of the user's address.
     :country (optional): Country of the user's address.
     :phone (optional): Phone number of the user.
+    :email: Email of the user.
     :special_request (optional): A special request of the customer.
     :date_from (optional): From when the booking is active.
     :date_until (optional): Until when the booking is active.
@@ -82,6 +83,8 @@ class Booking(models.Model):
     :booking_id (optional): Custom unique booking identifier.
     :booking_status: Current status of the booking.
     :notes (optional): Staff notes.
+    :total (optional): Field for storing a total of all items.
+    :currency (optional): If total is uses, we usually also need a currency.
 
     """
     user = models.ForeignKey(
@@ -229,6 +232,19 @@ class Booking(models.Model):
         blank=True,
     )
 
+    total = models.DecimalField(
+        max_digits=36,
+        decimal_places=28,
+        verbose_name=_('Total'),
+        blank=True, null=True,
+    )
+
+    currency = models.CharField(
+        verbose_name=_('Currency'),
+        max_length=128,
+        blank=True,
+    )
+
     class Meta:
         ordering = ['-creation_date']
 
@@ -243,6 +259,7 @@ class BookingItem(models.Model):
 
     :quantity: Quantity of booked items.
     :persons (optional): Quantity of persons, who are involved in this booking.
+    :subtotal (optional): Field for storing subtotals for each individual item.
     :booked_item: Connection to related booked item.
     :booking: Connection to related booking.
 
@@ -254,6 +271,13 @@ class BookingItem(models.Model):
 
     persons = models.PositiveIntegerField(
         verbose_name=_('Persons'),
+        blank=True, null=True,
+    )
+
+    subtotal = models.DecimalField(
+        max_digits=36,
+        decimal_places=28,
+        verbose_name=_('Subtotal'),
         blank=True, null=True,
     )
 

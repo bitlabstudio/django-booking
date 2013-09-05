@@ -14,7 +14,7 @@ class BookingForm(forms.ModelForm):
         keep_blank = [
             'phone', 'notes', 'street2', 'title', 'user', 'session',
             'date_from', 'date_until', 'special_request', 'time_period',
-            'time_unit']
+            'time_unit', 'email']
         # set all fields except the keep_blank ones to be required, since they
         # need to be blank=True on the model itself to allow creating Booking
         # instances without data
