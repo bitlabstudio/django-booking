@@ -1,4 +1,5 @@
 """Models for the ``booking`` app."""
+from django.conf import settings
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -52,22 +53,31 @@ class Booking(models.Model):
     """
     Model to contain information about a booking.
 
+    Note, that on the model itself, most of the attributes are blank=True.
+    We need this behaviour to be able to create empty temporary bookings.
+    You will have to take care of the field being required or not in a
+    ModelForm yourself.
+
     :user (optional): Connection to Django's User model.
     :session (optional): Stored session to identify anonymous users.
-    :gender: Gender of the user.
+    :gender (optional): Gender of the user.
     :title (optional): Title of the user.
-    :forename: First name of the user.
-    :surname: Last name of the user.
-    :nationality: The nationality of the user.
-    :street1: Street address of the user.
-    :street2: Additional street address of the user.
-    :city: City of the user's address.
-    :zip_code: ZIP of the user's address.
-    :country: Country of the user's address.
-    :phone: Phone number of the user.
+    :forename (optional): First name of the user.
+    :surname (optional): Last name of the user.
+    :nationality (optional): The nationality of the user.
+    :street1 (optional): Street address of the user.
+    :street2 (optional): Additional street address of the user.
+    :city (optional): City of the user's address.
+    :zip_code (optional): ZIP of the user's address.
+    :country (optional): Country of the user's address.
+    :phone (optional): Phone number of the user.
     :special_request (optional): A special request of the customer.
     :date_from (optional): From when the booking is active.
     :date_until (optional): Until when the booking is active.
+    :time_period (optional): How long the period from date_from will be.
+      e.g.: 10 (days).
+    :time_unit (optional): What unit of time the period is of. e.g. nights or
+      days.
     :creation_date: Date of the booking.
     :booking_id (optional): Custom unique booking identifier.
     :booking_status: Current status of the booking.
@@ -204,6 +214,18 @@ class Booking(models.Model):
     notes = models.TextField(
         max_length=1024,
         verbose_name=('Notes'),
+        blank=True,
+    )
+
+    time_period = models.PositiveIntegerField(
+        verbose_name=_('Time period'),
+        blank=True, null=True,
+    )
+
+    time_unit = models.CharField(
+        verbose_name=_('Time unit'),
+        default=getattr(settings, 'BOOKING_TIME_INTERVAL', ''),
+        max_length=64,
         blank=True,
     )
 

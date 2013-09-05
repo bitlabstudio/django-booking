@@ -64,6 +64,14 @@ Default: 'pending'
 
 Slug of the ``BookingStatus``, which should be added after booking creation.
 
+BOOKING_TIME_INTERVAL
++++++++++++++++++++++
+
+Default: ''
+
+The default value for the ``time_unit`` attribute of the Booking. Set it in
+case you need to specify that you want to book something e.g. X days or Y
+hours.
 
 Contribute
 ----------
