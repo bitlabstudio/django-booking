@@ -104,8 +104,8 @@ class Booking(models.Model):
         max_length=10,
         verbose_name=_('Gender'),
         choices=(
-            ('female', _('female')),
-            ('male', _('male')),
+            ('mrs', _('Mrs')),
+            ('mr', _('Mr')),
         ),
         blank=True,
     )
@@ -114,8 +114,8 @@ class Booking(models.Model):
         max_length=10,
         verbose_name=_('Title'),
         choices=(
-            ('mrs', _('Mrs')),
-            ('mr', _('Mr')),
+            ('dr', _('Dr.')),
+            ('prof', _('Prof.')),
         ),
         blank=True,
     )
