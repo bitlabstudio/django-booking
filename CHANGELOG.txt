@@ -1,8 +1,9 @@
 === (ongoing) ===
 
+=== 0.3 ===
+
 - Added email to Booking admin list display fields
 - Added utils for get_booking and persist_booking
-
 
 === 0.2 ===
 - Added BookingIDBackend and BookingIDAuthenticationForm
