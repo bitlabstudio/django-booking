@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Added email to Booking admin list display fields
+
 
 === 0.2 ===
 - Added BookingIDBackend and BookingIDAuthenticationForm

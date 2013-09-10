@@ -7,12 +7,15 @@ from . import models
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['creation_date', 'booking_status', 'booking_id', 'user',
-                    'session', 'date_from', 'date_until']
+    list_display = [
+        'creation_date', 'booking_status', 'booking_id', 'user', 'email',
+        'session', 'date_from', 'date_until',
+    ]
 
 
 class BookingItemAdmin(admin.ModelAdmin):
     list_display = ['booking', 'booked_item', 'quantity', 'persons']
+
 
 admin.site.register(models.Booking, BookingAdmin)
 admin.site.register(models.BookingItem, BookingItemAdmin)
