@@ -210,7 +210,7 @@ class Booking(models.Model):
 
     booking_status = models.ForeignKey(
         'booking.BookingStatus',
-        verbose_name=('Notes'),
+        verbose_name=('Booking status'),
         blank=True, null=True,
     )
 
