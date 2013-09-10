@@ -339,4 +339,4 @@ class ExtraPersonInfo(models.Model):
         ordering = ['-booking__creation_date']
 
     def __unicode__(self):
-        return '{} {} ({})'.format(self.forename, self.surename, self.booking)
+        return '{} {} ({})'.format(self.forename, self.surname, self.booking)
