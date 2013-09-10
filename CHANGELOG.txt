@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+
+=== 0.2 ===
 - Added BookingIDBackend and BookingIDAuthenticationForm
 - updated gender choices to Mr and Mrs
 - Added total, subtotal and currency field
