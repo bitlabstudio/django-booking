@@ -26,6 +26,15 @@ class BookingItemTestCase(TestCase):
             'Booking item model should have been created.'))
 
 
+class BookingErrorTestCase(TestCase):
+    """Tests for the ``BookingError`` model class."""
+    longMessage = True
+
+    def test_instantiation(self):
+        bookingerror = factories.BookingErrorFactory()
+        self.assertTrue(bookingerror.pk)
+
+
 class BookingStatusTestCase(TestCase):
     longMessage = True
 

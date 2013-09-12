@@ -18,5 +18,6 @@ class BookingItemAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Booking, BookingAdmin)
+admin.site.register(models.BookingError)
 admin.site.register(models.BookingItem, BookingItemAdmin)
 admin.site.register(models.BookingStatus, TranslationAdmin)

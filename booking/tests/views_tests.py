@@ -19,7 +19,7 @@ class BookingCreateViewTestCase(ViewTestMixin, TestCase):
         self.is_callable()
 
         data = {
-            'gender': 'male',
+            'gender': 'mr',
             'forename': 'Foo',
             'surname': 'Bar',
             'nationality': 'DE',

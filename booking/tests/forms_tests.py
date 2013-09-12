@@ -17,7 +17,7 @@ class BookingFormTestCase(TestCase):
         self.assertTrue(form, msg=('Form has been initiated.'))
 
         data = {
-            'gender': 'male',
+            'gender': 'mr',
             'forename': 'Foo',
             'nationality': 'DE',
             'street1': 'Foostreet 12',

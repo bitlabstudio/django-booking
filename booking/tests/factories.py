@@ -44,6 +44,13 @@ class BookingItemFactory(factory.DjangoModelFactory):
     booked_item = factory.SubFactory(UserFactory)
 
 
+class BookingErrorFactory(factory.Factory):
+    """Factory for the ``BookingError`` model."""
+    FACTORY_FOR = models.BookingError
+
+    booking = factory.SubFactory(BookingFactory)
+
+
 class ExtraPersonInfoFactory(factory.DjangoModelFactory):
     """Factory for the ``ExtraPersonInfo`` model."""
     FACTORY_FOR = models.ExtraPersonInfo

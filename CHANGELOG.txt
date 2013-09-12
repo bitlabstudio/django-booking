@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Added the BookingError model
+
 === 0.3 ===
 
 - Added email to Booking admin list display fields

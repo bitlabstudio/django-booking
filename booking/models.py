@@ -253,6 +253,47 @@ class Booking(models.Model):
                                  self.creation_date)
 
 
+class BookingError(models.Model):
+    """
+    Holds information about an error during a booking process.
+
+    This can be particularly useful, when many of the processes are automated
+    or reliant on a third party app or API. You then can store the returned
+    values directly into this model and have easy access and reference to the
+    actual booking.
+
+    :booking: The booking during this error occurred.
+    :message: The short error message, that you need to store.
+    :details: A more in depth text about the error or any kind of additional
+      information, e.g. a traceback.
+    :date: The time and date this error occured.
+
+    """
+    booking = models.ForeignKey(
+        Booking,
+        verbose_name=_('Booking'),
+    )
+    message = models.CharField(
+        verbose_name=_('Message'),
+        max_length=1000,
+        blank=True,
+    )
+    details = models.TextField(
+        verbose_name=_('Details'),
+        max_length=4000,
+        blank=True,
+    )
+
+    date = models.DateTimeField(
+        verbose_name=_('Date'),
+        auto_now_add=True,
+    )
+
+    def __unicode__(self):
+        return '[{0}] {1} - {2}'.format(self.date, self.booking.booking_id,
+                                        self.message)
+
+
 class BookingItem(models.Model):
     """
     Model to connect a booking with a related object.
