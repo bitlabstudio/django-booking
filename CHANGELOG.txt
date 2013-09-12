@@ -1,5 +1,8 @@
 === (ongoing) ===
 
+
+=== 0.4 ===
+
 - Added the BookingError model
 
 === 0.3 ===
