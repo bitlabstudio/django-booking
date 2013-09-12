@@ -88,6 +88,23 @@ hours. Set it to the singular of that time unit:::
 
    BOOKING_TIME_INTERVAL = 'day'
 
+
+Error logging
++++++++++++++
+
+In case you want to add error logging especially for booking processes, we
+provide a ``BookinError`` model, in which you can store:
+
++-------------+--------------------------------------------------------------------------+
+| ``booking`` | (FK to Booking - required) The booking during this error occurred.       |
++-------------+--------------------------------------------------------------------------+
+| ``message`` | (Char) The short error message, that you need to store.                  |
++-------------+--------------------------------------------------------------------------+
+| ``details`` | (Text) A more in depth text about the error or any kind of additional    |
+|             | information, e.g. a traceback.                                           |
++-------------+--------------------------------------------------------------------------+
+
+
 Contribute
 ----------
 
