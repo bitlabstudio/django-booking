@@ -20,7 +20,8 @@ def get_booking(request):
     booking = None
     if request.user.is_authenticated():
         try:
-            booking = Booking.objects.get(user=request.user,
+            booking = Booking.objects.get(
+                user=request.user,
                 booking_status__slug='inprogress')
         except Booking.DoesNotExist:
             # The user does not have any open bookings
@@ -59,7 +60,7 @@ def persist_booking(booking, user):
     if booking is not None:
         existing_bookings = Booking.objects.filter(
             user=user, booking_status__slug='inprogress').exclude(
-                pk=booking.pk)
+            pk=booking.pk)
         existing_bookings.delete()
 
         booking.session = None
