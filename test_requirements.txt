@@ -4,6 +4,6 @@ django-coverage
 ipdb
 flake8
 fabric
-factory_boy
+factory_boy>2.0.0
 -e git+http://bitbucket.org/dkaufhold/django-international.git#egg=international
 South==0.8.2

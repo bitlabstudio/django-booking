@@ -123,3 +123,11 @@ If you want to contribute to this project, please perform the following steps
     $ git add . && git commit
     $ git push -u origin feature_branch
     # Send us a pull request for your feature branch
+
+Updating from v0.4 and below
+----------------------------
+
+v0.5 of this app has updated the ``factory_boy`` requirements to >2.0.0
+``factory_boy`` though has a dependency for setuptools>=0.8, which you need to
+install before upgrading your virtual environment. Otherwise running ``pip
+install --upgrade -r requirements.txt`` will fail.

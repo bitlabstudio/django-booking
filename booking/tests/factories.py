@@ -7,7 +7,7 @@ from django_libs.tests.factories import SimpleTranslationMixin
 from .. import models
 
 
-class BookingStatusFactory(SimpleTranslationMixin, factory.Factory):
+class BookingStatusFactory(SimpleTranslationMixin, factory.DjangoModelFactory):
     """Factory for the ``BookingStatus`` model."""
     FACTORY_FOR = models.BookingStatus
 
@@ -18,7 +18,7 @@ class BookingStatusFactory(SimpleTranslationMixin, factory.Factory):
         return (BookingStatusTranslationFactory, 'status')
 
 
-class BookingStatusTranslationFactory(factory.Factory):
+class BookingStatusTranslationFactory(factory.DjangoModelFactory):
     """Factory for ``BookingStatusTranslation`` objects."""
     FACTORY_FOR = models.BookingStatusTranslation
 
@@ -44,7 +44,7 @@ class BookingItemFactory(factory.DjangoModelFactory):
     booked_item = factory.SubFactory(UserFactory)
 
 
-class BookingErrorFactory(factory.Factory):
+class BookingErrorFactory(factory.DjangoModelFactory):
     """Factory for the ``BookingError`` model."""
     FACTORY_FOR = models.BookingError
 
