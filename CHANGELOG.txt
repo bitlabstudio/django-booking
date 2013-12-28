@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Migrated to django-hvad
+
 === 0.5 ===
 
 - updated to factory-boy > 2.0.0

@@ -2,29 +2,17 @@
 import factory
 
 from django_libs.tests.factories import UserFactory
-from django_libs.tests.factories import SimpleTranslationMixin
+from django_libs.tests.factories import HvadFactoryMixin
 
 from .. import models
 
 
-class BookingStatusFactory(SimpleTranslationMixin, factory.DjangoModelFactory):
+class BookingStatusFactory(HvadFactoryMixin, factory.DjangoModelFactory):
     """Factory for the ``BookingStatus`` model."""
     FACTORY_FOR = models.BookingStatus
 
     slug = factory.Sequence(lambda x: 'status-{}'.format(x))
-
-    @staticmethod
-    def _get_translation_factory_and_field():
-        return (BookingStatusTranslationFactory, 'status')
-
-
-class BookingStatusTranslationFactory(factory.DjangoModelFactory):
-    """Factory for ``BookingStatusTranslation`` objects."""
-    FACTORY_FOR = models.BookingStatusTranslation
-
-    name = factory.Sequence(lambda x: 'Status {}'.format(x))
-    status = factory.SubFactory(BookingStatusFactory)
-    language = 'en'
+    name = factory.Sequence(lambda n: 'Status {0}'.format(n))
 
 
 class BookingFactory(factory.DjangoModelFactory):

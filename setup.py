@@ -53,7 +53,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'Django>=1.5.2',
-        'simple-translation>=0.8.6',
-        'django-libs>=1.16',
+        'django-hvad',
+        'django-libs>=1.35',
     ],
 )

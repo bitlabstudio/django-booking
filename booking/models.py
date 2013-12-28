@@ -5,48 +5,34 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from django_libs.models_mixins import SimpleTranslationMixin
+from hvad.models import TranslatableModel, TranslatedFields
 from international.models import countries
 
 
-class BookingStatus(SimpleTranslationMixin, models.Model):
+class BookingStatus(TranslatableModel):
     """
     Master data containing all booking status.
     For translatable fields check ``BookingStatusTranslation``.
 
     :slug: A unique slug identifier.
 
+    translated:
+    :name: The displayable name for the status.
+
     """
     slug = models.SlugField(
         verbose_name=_('Slug'),
     )
 
-    def __unicode__(self):
-        return self.slug
-
-
-class BookingStatusTranslation(models.Model):
-    """
-    Translatable fields of the ``BookingStatus`` model.
-
-    :name: The name of the status.
-
-    Needed by simple translation:
-    :language: The language of the translation.
-    :status: The status this translation belongs to.
-
-    """
-    name = models.CharField(
-        max_length=128,
-        verbose_name=_('Name'),
+    translations = TranslatedFields(
+        name=models.CharField(
+            verbose_name=_('Name'),
+            max_length=128,
+        )
     )
 
-    # needed by simple translation
-    language = models.CharField(max_length=16)
-    status = models.ForeignKey(BookingStatus)
-
     def __unicode__(self):
-        return self.name
+        return self.safe_translation_getter('name', self.slug)
 
 
 class Booking(models.Model):
