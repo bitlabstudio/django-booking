@@ -1,5 +1,8 @@
 === (ongoing) ===
 
+
+=== 0.6  ===
+
 - Migrated to django-hvad
 
 === 0.5 ===
