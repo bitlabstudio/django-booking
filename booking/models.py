@@ -220,7 +220,7 @@ class Booking(models.Model):
 
     total = models.DecimalField(
         max_digits=36,
-        decimal_places=28,
+        decimal_places=2,
         verbose_name=_('Total'),
         blank=True, null=True,
     )
@@ -303,7 +303,7 @@ class BookingItem(models.Model):
 
     subtotal = models.DecimalField(
         max_digits=36,
-        decimal_places=28,
+        decimal_places=2,
         verbose_name=_('Subtotal'),
         blank=True, null=True,
     )
