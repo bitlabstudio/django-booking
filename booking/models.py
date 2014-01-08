@@ -286,9 +286,12 @@ class BookingItem(models.Model):
 
     :quantity: Quantity of booked items.
     :persons (optional): Quantity of persons, who are involved in this booking.
-    :subtotal (optional): Field for storing subtotals for each individual item.
+    :subtotal (optional): Field for storing the price of each individual item.
     :booked_item: Connection to related booked item.
     :booking: Connection to related booking.
+
+    properties:
+    :price: Returns the full price for subtotal * quantity.
 
     """
     quantity = models.PositiveIntegerField(
@@ -323,6 +326,10 @@ class BookingItem(models.Model):
 
     def __unicode__(self):
         return '{} ({})'.format(self.booking, self.booked_item)
+
+    @property
+    def price(self):
+        return self.quantity * self.subtotal
 
 
 class ExtraPersonInfo(models.Model):
