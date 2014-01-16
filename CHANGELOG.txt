@@ -1,6 +1,11 @@
 === (ongoing) ===
 
 
+=== 0.7 ===
+
+- added property for full price of an item
+- lowered decimal places of price to 2
+
 === 0.6  ===
 
 - Migrated to django-hvad
