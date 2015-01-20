@@ -1,4 +1,4 @@
-=== (ongoing) ===
+=== (ongoing 0.7.X) To be released as 0.8 ===
 
 - Fixed dependencies
 - Fixed compatibility of django.conf.urls.defaults import
