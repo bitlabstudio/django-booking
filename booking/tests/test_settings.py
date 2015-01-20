@@ -47,7 +47,6 @@ EXTERNAL_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'django_nose',
-    'simple_translation',
 ]
 
 INTERNAL_APPS = [
