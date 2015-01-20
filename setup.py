@@ -31,6 +31,9 @@ import os
 from setuptools import setup, find_packages
 import booking as app
 
+dependency_links = [
+   'https://bitbucket.org/dkaufhold/django-international/get/4628c1c87c6c.zip#egg=international-0.0.6',  # NOQA
+]
 
 def read(fname):
     try:
@@ -55,6 +58,7 @@ setup(
         'Django>=1.5.2',
         'django-hvad',
         'django-libs>=1.35',
+        'django-international==0.0.6',
     ],
-    dependency_links=['https://bitbucket.org/dkaufhold/django-international/get/4628c1c87c6c.zip'],
+    dependency_links=dependency_links,
 )

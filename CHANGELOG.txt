@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Fixed dependencies
+- Fixed compatibility of django.conf.urls.defaults import
 
 === 0.7 ===
 
