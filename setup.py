@@ -55,7 +55,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Django>=1.5.2',
+        'Django>=1.5.2,<1.7',
         'django-hvad',
         'django-libs>=1.35',
         'django-international==0.0.6',
