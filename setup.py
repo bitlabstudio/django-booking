@@ -56,4 +56,5 @@ setup(
         'django-hvad',
         'django-libs>=1.35',
     ],
+    dependency_links=['https://bitbucket.org/dkaufhold/django-international/get/4628c1c87c6c.zip'],
 )

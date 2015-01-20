@@ -1,5 +1,10 @@
 """URLs for the booking app."""
-from django.conf.urls.defaults import patterns, url
+try:
+    from django.conf.urls import patterns, url
+except ImportError:  # Pre-Django 1.4 version
+    from django.conf.urls.defaults import patterns, url
+
+
 
 from . import views
 
