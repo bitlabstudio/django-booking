@@ -1,5 +1,8 @@
 """URLs to run the tests."""
-from django.conf.urls.defaults import patterns, include, url
+try:
+    from django.conf.urls import patterns, include, url
+except ImportError:  # Pre-Django 1.4 version
+    from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 
 
