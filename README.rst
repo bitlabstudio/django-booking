@@ -1,5 +1,5 @@
 Django Booking
-============
+==============
 
 A reusable Django app that manages bookings for various purposes.
 
