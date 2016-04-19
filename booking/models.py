@@ -1,15 +1,17 @@
 """Models for the ``booking`` app."""
 from django.conf import settings
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from django_libs.models_mixins import TranslationModelMixin
+from django_countries.fields import CountryField
 from hvad.models import TranslatableModel, TranslatedFields
-from international.models import countries
 
 
-class BookingStatus(TranslatableModel):
+class BookingStatus(TranslationModelMixin, TranslatableModel):
     """
     Master data containing all booking status.
     For translatable fields check ``BookingStatusTranslation``.
@@ -31,10 +33,8 @@ class BookingStatus(TranslatableModel):
         )
     )
 
-    def __unicode__(self):
-        return self.safe_translation_getter('name', self.slug)
 
-
+@python_2_unicode_compatible
 class Booking(models.Model):
     """
     Model to contain information about a booking.
@@ -118,10 +118,9 @@ class Booking(models.Model):
         blank=True,
     )
 
-    nationality = models.CharField(
+    nationality = CountryField(
         max_length=2,
         verbose_name=_('Nationality'),
-        choices=countries,
         blank=True,
     )
 
@@ -149,10 +148,9 @@ class Booking(models.Model):
         blank=True,
     )
 
-    country = models.CharField(
+    country = CountryField(
         max_length=2,
         verbose_name=_('Country'),
-        choices=countries,
         blank=True,
     )
 
@@ -234,11 +232,12 @@ class Booking(models.Model):
     class Meta:
         ordering = ['-creation_date']
 
-    def __unicode__(self):
+    def __str__(self):
         return '#{} ({})'.format(self.booking_id or self.pk,
                                  self.creation_date)
 
 
+@python_2_unicode_compatible
 class BookingError(models.Model):
     """
     Holds information about an error during a booking process.
@@ -275,11 +274,12 @@ class BookingError(models.Model):
         auto_now_add=True,
     )
 
-    def __unicode__(self):
-        return '[{0}] {1} - {2}'.format(self.date, self.booking.booking_id,
-                                        self.message)
+    def __str__(self):
+        return u'[{0}] {1} - {2}'.format(self.date, self.booking.booking_id,
+                                         self.message)
 
 
+@python_2_unicode_compatible
 class BookingItem(models.Model):
     """
     Model to connect a booking with a related object.
@@ -314,7 +314,7 @@ class BookingItem(models.Model):
     # GFK 'booked_item'
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    booked_item = generic.GenericForeignKey('content_type', 'object_id')
+    booked_item = GenericForeignKey('content_type', 'object_id')
 
     booking = models.ForeignKey(
         'booking.Booking',
@@ -324,14 +324,15 @@ class BookingItem(models.Model):
     class Meta:
         ordering = ['-booking__creation_date']
 
-    def __unicode__(self):
-        return '{} ({})'.format(self.booking, self.booked_item)
+    def __str__(self):
+        return u'{} ({})'.format(self.booking, self.booked_item)
 
     @property
     def price(self):
         return self.quantity * self.subtotal
 
 
+@python_2_unicode_compatible
 class ExtraPersonInfo(models.Model):
     """
     Model to add extra information of persons/guests to a booking.
@@ -372,5 +373,5 @@ class ExtraPersonInfo(models.Model):
     class Meta:
         ordering = ['-booking__creation_date']
 
-    def __unicode__(self):
-        return '{} {} ({})'.format(self.forename, self.surname, self.booking)
+    def __str__(self):
+        return u'{} {} ({})'.format(self.forename, self.surname, self.booking)

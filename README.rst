@@ -93,7 +93,7 @@ Error logging
 +++++++++++++
 
 In case you want to add error logging especially for booking processes, we
-provide a ``BookinError`` model, in which you can store:
+provide a ``BookingError`` model, in which you can store:
 
 +-------------+--------------------------------------------------------------------------+
 | ``booking`` | (FK to Booking - required) The booking during this error occurred.       |
@@ -114,20 +114,15 @@ If you want to contribute to this project, please perform the following steps
 
     # Fork this repository
     # Clone your fork
-    $ mkvirtualenv -p python2.7 django-booking
-    $ python setup.py install
-    $ pip install -r dev_requirements.txt
+    mkvirtualenv -p python2.7 django-booking
+    make develop
 
-    $ git co -b feature_branch master
+    git co -b feature_branch master
     # Implement your feature and tests
-    $ git add . && git commit
-    $ git push -u origin feature_branch
+    git add . && git commit
+    git push -u origin feature_branch
     # Send us a pull request for your feature branch
 
-Updating from v0.4 and below
-----------------------------
-
-v0.5 of this app has updated the ``factory_boy`` requirements to >2.0.0
-``factory_boy`` though has a dependency for setuptools>=0.8, which you need to
-install before upgrading your virtual environment. Otherwise running ``pip
-install --upgrade -r requirements.txt`` will fail.
+In order to run the tests, simply execute ``tox``. This will install two new
+environments (for Django 1.8 and Django 1.9) and run the tests against both
+environments.

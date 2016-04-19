@@ -1,7 +1,8 @@
 """Form tests for the ``booking`` app."""
 from django.test import TestCase
 
-from .factories import BookingStatusFactory
+from mixer.backend.django import mixer
+
 from ..forms import BookingForm
 from ..models import Booking
 
@@ -10,7 +11,7 @@ class BookingFormTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.status = BookingStatusFactory()
+        self.status = mixer.blend('booking.BookingStatus')
 
     def test_form(self):
         form = BookingForm()

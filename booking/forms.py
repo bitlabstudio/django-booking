@@ -21,7 +21,7 @@ class BookingForm(forms.ModelForm):
         # set all fields except the keep_blank ones to be required, since they
         # need to be blank=True on the model itself to allow creating Booking
         # instances without data
-        for name, field in self.fields.iteritems():
+        for name, field in self.fields.items():
             if name not in keep_blank:
                 self.fields[name].required = True
 

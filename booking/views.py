@@ -10,14 +10,14 @@ from .forms import BookingForm
 from .models import Booking
 
 
-#------ MIXINS ------#
+# ------ MIXINS ------ #
 
 class BookingViewMixin(object):
     model = Booking
     form_class = BookingForm
 
 
-#------ MODEL VIEWS ------#
+# ------ MODEL VIEWS ------ #
 
 class BookingCreateView(BookingViewMixin, CreateView):
     """View to create a new ``Booking`` instance."""
@@ -51,8 +51,8 @@ class BookingDetailView(BookingViewMixin, DetailView):
         else:
             # If anonymous doesn't own the booking forbid access
             session = self.object.session
-            if (not session or not request.session.session_key
-                    or session.session_key != request.session.session_key):
+            if (not session or not request.session.session_key or
+                    session.session_key != request.session.session_key):
                 raise Http404
         return super(BookingViewMixin, self).dispatch(request, *args, **kwargs)
 

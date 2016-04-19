@@ -1,14 +1,14 @@
 """Tests for the models of the booking app."""
 from django.test import TestCase
 
-from . import factories
+from mixer.backend.django import mixer
 
 
 class BookingTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.booking = factories.BookingFactory()
+        self.booking = mixer.blend('booking.Booking')
 
     def test_instance(self):
         self.assertTrue(self.booking.pk, msg=(
@@ -19,7 +19,7 @@ class BookingItemTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.booking_item = factories.BookingItemFactory()
+        self.booking_item = mixer.blend('booking.BookingItem')
 
     def test_instance(self):
         self.assertTrue(self.booking_item.pk, msg=(
@@ -31,7 +31,7 @@ class BookingErrorTestCase(TestCase):
     longMessage = True
 
     def test_instantiation(self):
-        bookingerror = factories.BookingErrorFactory()
+        bookingerror = mixer.blend('booking.BookingError')
         self.assertTrue(bookingerror.pk)
 
 
@@ -39,7 +39,7 @@ class BookingStatusTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.booking_status = factories.BookingStatusFactory()
+        self.booking_status = mixer.blend('booking.BookingStatus')
 
     def test_instance(self):
         self.assertTrue(self.booking_status.pk, msg=(
@@ -50,7 +50,7 @@ class ExtraPersonInfoTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.info = factories.ExtraPersonInfoFactory()
+        self.info = mixer.blend('booking.ExtraPersonInfo')
 
     def test_instance(self):
         self.assertTrue(self.info.pk, msg=(

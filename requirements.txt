@@ -1,0 +1,4 @@
+django
+django-hvad
+django-countries
+django-libs

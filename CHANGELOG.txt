@@ -1,5 +1,6 @@
 === (ongoing 0.7.X) To be released as 0.8 ===
 
+- Prepared app for Django 1.9 and Python 3.5
 - Fixed dependencies
 - Fixed compatibility of django.conf.urls.defaults import
 
